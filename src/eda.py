@@ -10,27 +10,27 @@ df = pd.read_csv(
     names=["x", "y", "classe"]
 ).dropna()
 
-print("INFORMAÇÕES GERAIS")
+print("Informações Gerais")
 print(f"Registros: {len(df)}")
 print(f"Colunas: {len(df.columns)}")
 
-print("\nTIPOS DAS COLUNAS")
+print("\nTipos das colunas")
 print(df.dtypes)
 
-print("\nVALORES NULOS")
+print("\Valores nulos")
 print(df.isnull().sum())
 
-print("\nDUPLICADOS")
+print("\Duplicados")
 print(df.duplicated().sum())
 
-print("\nDISTRIBUIÇÃO DAS CLASSES")
+print("\nDistribuição das classes")
 print(df["classe"].value_counts().sort_index())
 
-print("\nESTATÍSTICAS DESCRITIVAS")
+print("\nEstatísticas Descritivas")
 print(df.describe())
 
 
-print("\nGERANDO GRÁFICOS...")
+print("\nGerando gráficos...")
 plt.figure(figsize=(8,8))
 for classe in sorted(df["classe"].unique()):
     subset = df[df["classe"] == classe] 
@@ -45,7 +45,7 @@ plt.xlabel("X")
 plt.ylabel("Y")
 plt.title("Distribuição das Classes")
 plt.legend()
-plt.savefig("../data/images/distribuica_classes.png")
+plt.savefig("../data/images/eda/distribuica_classes.png")
 plt.close()
 
 plt.figure(figsize=(8,8))
@@ -53,7 +53,7 @@ df["x"].hist(bins=30)
 plt.xlabel("X")
 plt.ylabel("Frequência")
 plt.title("Histograma X")
-plt.savefig("../data/images/histograma_x.png")
+plt.savefig("../data/images/eda/histograma_x.png")
 plt.close()
 
 plt.figure(figsize=(8,8))
@@ -61,13 +61,13 @@ df["y"].hist(bins=30)
 plt.xlabel("Y")
 plt.ylabel("Frequência")
 plt.title("Histograma Y") 
-plt.savefig("../data/images/histograma_y.png")
+plt.savefig("../data/images/eda/histograma_y.png")
 plt.close()
 
 plt.figure(figsize=(8,8))
 df[["x", "y"]].boxplot()
 plt.title("Boxplot")
-plt.savefig("../data/images/boxplot.png")
+plt.savefig("../data/images/eda/boxplot.png")
 plt.close()
 
 plt.figure(figsize=(8,8))
@@ -78,7 +78,7 @@ plt.xticks([0,1], ["x","y"])
 plt.yticks([0,1], ["x","y"])
 
 plt.colorbar()
-plt.savefig("../data/images/correlacao.png")
+plt.savefig("../data/images/eda/correlacao.png")
 plt.close()
 
-print("\nGRÁFICOS GERADOS EM data/images")
+print("\nGráficos gerados em data/images/eda")
